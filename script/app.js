@@ -55,12 +55,18 @@ const GetTaskList = () => {
 
         let moveBtn = document.createElement('button');
         moveBtn.className = "inline-flex items-center ml-4 px-2 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-400 hover:cursor-pointer";
-        if (task.taskStatus === "To Do") {
+
+        if(task.taskStatus == "To Do"){
             moveBtn.innerText = "Progress";
-        } else if (task.taskStatus === "In Progress") {
+            toDoStatus.appendChild(cardDiv);
+
+        }else if(task.taskStatus == "In Progress"){
             moveBtn.innerText = "Complete";
-        } else {
+            inProgressStatus.appendChild(cardDiv);
+
+        }else if(task.taskStatus == "Completed"){
             moveBtn.innerText = "";
+            completedStatus.appendChild(cardDiv);
         }
 
         removeBtn.addEventListener('click', () => {
@@ -69,7 +75,7 @@ const GetTaskList = () => {
         })
 
         editBtn.addEventListener('click', () => {
-            
+            //add functionality
         })
 
         cardDiv.appendChild(cardH5);
@@ -79,28 +85,20 @@ const GetTaskList = () => {
         cardDiv.appendChild(removeBtn);
         cardDiv.appendChild(editBtn);
         cardDiv.appendChild(moveBtn);
-        
-        //toDoStatus.appendChild(cardDiv);
-        
-        if(task.taskStatus === "To Do"){
-            toDoStatus.appendChild(cardDiv);
-        }else if(task.taskStatus === "In Progress"){
-            inProgressStatus.appendChild(cardDiv);
-        }else if(task.taskStatus === "Completed"){
-            completedStatus.appendChild(cardDiv);
-        }
 
         moveBtn.addEventListener('click', () => {
-            if (moveBtn.innerText === "Progress") {
-                moveBtn.innerText = "Complete";
+            if(moveBtn.innerText == "Progress"){
                 task.taskStatus = "In Progress";
+                moveBtn.innerText = "Complete";
+                
                 inProgressStatus.appendChild(cardDiv);
-            } else if (moveBtn.innerText === "Complete") {
+
+            }else if(moveBtn.innerText == "Complete"){
                 task.taskStatus = "Completed";  
+
                 completedStatus.appendChild(cardDiv);
             }
-
-            updateTaskInStorage(task);   
+            updateTaskInStorage(task); 
         })
 
     })
@@ -124,7 +122,6 @@ addTaskBtn.addEventListener('click', () => {
         taskId = 1;
     }else{
         taskId = dataTask[dataTask.length - 1].taskId + 1;
-        console.log(dataTask[dataTask.length - 1])
     }
 
     let wholeTask = {taskId, taskName, taskDescription, dueDate, priorityStatus, taskStatus};

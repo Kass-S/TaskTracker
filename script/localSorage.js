@@ -16,21 +16,26 @@ const getFromStorage = () => {
     return JSON.parse(localStorageData);
 }
 
-function updateTaskInStorage(updatedTask) {
+const updateTaskInStorage = (updatedTask) => {
     let taskList = getFromStorage();
-    taskList = taskList.map(task => {
-        if (task.taskId === updatedTask.taskId) {
+
+    let updatedTaskList = taskList.map(task => {
+        if (task.taskId == updatedTask.taskId) {
+            console.log(updatedTask)
             task = updatedTask;
         }
+        return task;
     });
-    saveToStorage(taskList); 
+    console.log(updatedTaskList)
+    localStorage.setItem('Task', JSON.stringify(updatedTaskList));
 }
+
 
 const removeFromStorage = (task) => {
     let localStorageData = getFromStorage();
     console.log(task);
     
-    let taskIndex = localStorageData.findIndex(t => t.taskId === task.taskId);
+    let taskIndex = localStorageData.findIndex(t => t.taskId == task.taskId);
     console.log(taskIndex);
 
     localStorageData.splice(taskIndex, 1);
