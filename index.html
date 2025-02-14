@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <input id="taskNameInput" placeholder="Task Name" type="text" class="bg-green-600 hover:bg-green-500 placeholder:text-black rounded-lg">
+
+    <input id="taskDescriptionInput" placeholder="Description" type="text" class="bg-green-600 hover:bg-green-500 placeholder:text-black rounded-lg">
+    
+    <button data-dropdown-toggle="dropdown" class="bg-green-600 hover:bg-green-500 hover:cursor-pointer text-black rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Priority Status 
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+        </svg>
+    </button>    
+        <!-- Dropdown menu -->
+    <div id="dropdown" class="z-10 hidden bg-green-500 divide-y divide-gray-100 rounded-lg shadow-sm w-44 ">
+        <ul class="py-2 text-sm text-black " aria-labelledby="dropdownDefaultButton">
+            <li>
+                <button id="lowPriorityBtn" class="block px-4 py-2 hover:bg-green-600 ">Low</button>
+            </li>
+            <li>
+                <button id="mediumPriorityBtn" class="block px-4 py-2 hover:bg-green-600 ">Medium</button>
+            </li>
+            <li>
+                <button id="highPriorityBtn" class="block px-4 py-2 hover:bg-green-600 ">High</button>
+            </li>
+        </ul>
+    </div>
+    
+    <input id="dueDateInput" placeholder="Due Date" type="text" class="bg-green-600 hover:bg-green-500 placeholder:text-black rounded-lg">
+
+    
+    <script type="module" src="./script/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>
