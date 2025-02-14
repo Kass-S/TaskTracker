@@ -10,11 +10,11 @@
 <body class="bg-amber-100">
 
     <div class="m-10 mx-20">
-        <input id="taskNameInput" placeholder="Task Name" type="text" class="bg-green-500 hover:bg-green-400 placeholder:text-black rounded-lg">
+        <input id="taskNameInput" placeholder="Task Name" type="text" class="bg-green-400 hover:bg-green-300 placeholder:text-black rounded-lg">
 
-        <input id="taskDescriptionInput" placeholder="Description" type="text" class="bg-green-500 hover:bg-green-400 placeholder:text-black rounded-lg">
+        <input id="taskDescriptionInput" placeholder="Description" type="text" class="bg-green-400 hover:bg-green-300 placeholder:text-black rounded-lg">
         
-        <button id="priorityStatusBtn" data-dropdown-toggle="dropdown" class="bg-green-600 hover:bg-green-500 hover:cursor-pointer text-black rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Priority Status 
+        <button id="priorityStatusBtn" data-dropdown-toggle="dropdown" class="bg-green-500 hover:bg-green-400 hover:cursor-pointer text-black rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Priority Status 
             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
@@ -23,33 +23,33 @@
         <div id="dropdown" class="z-10 hidden bg-green-500 divide-y divide-gray-100 rounded-lg shadow-sm w-44 ">
             <ul class="py-2 text-sm text-black " aria-labelledby="dropdownDefaultButton">
                 <li>
-                    <a id="lowPriorityBtn" class="block px-4 py-2 hover:bg-green-600 hover:cursor-pointer">Low</a>
+                    <a id="lowPriorityBtn" class="block px-4 py-2 hover:bg-green-400 hover:cursor-pointer">Low</a>
                 </li>
                 <li>
-                    <a id="mediumPriorityBtn" class="block px-4 py-2 hover:bg-green-600 hover:cursor-pointer">Medium</a>
+                    <a id="mediumPriorityBtn" class="block px-4 py-2 hover:bg-green-400 hover:cursor-pointer">Medium</a>
                 </li>
                 <li>
-                    <a id="highPriorityBtn" class="block px-4 py-2 hover:bg-green-600 hover:cursor-pointer">High</a>
+                    <a id="highPriorityBtn" class="block px-4 py-2 hover:bg-green-400 hover:cursor-pointer">High</a>
                 </li>
             </ul>
         </div>
         
-        <input id="dueDateInput" placeholder="Due Date" type="date" class="bg-green-500 hover:bg-green-400 placeholder:text-black rounded-lg">
+        <input id="dueDateInput" placeholder="Due Date" type="date" class="bg-green-400 hover:bg-green-300 placeholder:text-black rounded-lg">
 
-        <button id="addTaskBtn" class="bg-green-600 hover:bg-green-500 hover:cursor-pointer text-black rounded-lg p-2 px-5 ml-10">Add Task</button>
+        <button id="addTaskBtn" class="bg-green-500 hover:bg-green-400 hover:cursor-pointer text-black rounded-lg p-2 px-5 ml-10">Add Task</button>
     </div>
 
     <div class="flex justify-around text-center mt-10">
         <div>
-            <p class="text-3xl">To Do</p>
-            <div id="toDoStatus" ></div>
+            <p class="text-3xl mb-5">To Do</p>
+            <div id="toDoStatus"></div>
         </div>
         <div>
-            <p class="text-3xl">In Progress</p>
+            <p class="text-3xl mb-5">In Progress</p>
             <div id="inProgressStatus"></div>
         </div>
         <div>
-            <p class="text-3xl ">Completed</p>
+            <p class="text-3xl mb-5">Completed</p>
             <div id="completedStatus"></div>
         </div>      
     </div>

@@ -12,6 +12,8 @@ let highPriorityBtn = document.getElementById('highPriorityBtn');
 let addTaskBtn = document.getElementById('addTaskBtn');
 
 let toDoStatus = document.getElementById('toDoStatus');
+let inProgressStatus = document.getElementById('inProgressStatus');
+let completedStatus = document.getElementById('completedStatus');
 
 let priorityStatus = 'Low'
 
@@ -21,7 +23,7 @@ const GetTaskList = () => {
     taskList.map(task => {
 
         let cardDiv = document.createElement('div');
-        cardDiv.className = "max-w-sm p-6 bg-amber-50 border border-gray-200 rounded-lg shadow-sm mt-5 m-5";
+        cardDiv.className = "max-w-sm p-6 bg-amber-50 border border-gray-200 rounded-lg shadow-sm m-2  ";
 
         let cardH5 = document.createElement('h5');
         cardH5.className = "mb-2 mx-20 text-2xl font-bold tracking-tight";
@@ -40,22 +42,27 @@ const GetTaskList = () => {
         cardDueDateP.innerText = `Due Date: ${task.dueDate}`;
 
         let removeBtn = document.createElement('button');
-        removeBtn.className = 'bg-red-500 inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg hover:bg-red-500 hover:cursor-pointer';
+        removeBtn.className = 'bg-red-500 inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg hover:bg-red-400 hover:cursor-pointer';
         removeBtn.innerText = 'Delete';
 
         let editBtn = document.createElement('button');
-        editBtn.className = "inline-flex items-center ml-4 px-5 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-600 hover:cursor-pointer";
+        editBtn.className = "inline-flex items-center ml-4 px-5 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-400 hover:cursor-pointer";
         editBtn.innerText = "Edit";
 
+        let moveBtn =document.createElement('button');
+        moveBtn.className = "inline-flex items-center ml-4 px-2 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-400 hover:cursor-pointer";
+        moveBtn.innerText = "Progress";
+
         removeBtn.addEventListener('click', () => {
-            //is deleting the wrong object from local storage
             removeFromStorage(task);
             cardDiv.remove();
         })
 
         editBtn.addEventListener('click', () => {
-
+            
         })
+
+        
 
         cardDiv.appendChild(cardH5);
         cardDiv.appendChild(cardP);
@@ -63,8 +70,18 @@ const GetTaskList = () => {
         cardDiv.appendChild(cardDueDateP);
         cardDiv.appendChild(removeBtn);
         cardDiv.appendChild(editBtn);
+        cardDiv.appendChild(moveBtn);
 
         toDoStatus.appendChild(cardDiv);
+
+        moveBtn.addEventListener('click', () => {
+            if(toDoStatus.appendChild(cardDiv) == true){
+                inProgressStatus.appendChild(cardDiv);
+            }else if(inProgressStatus.appendChild(cardDiv) == true){
+                completedStatus.appendChild(cardDiv);
+            }
+        })
+
     })
 }
 GetTaskList();
