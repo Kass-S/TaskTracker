@@ -18,7 +18,10 @@ const getFromStorage = () => {
 
 const removeFromStorage = (task) => {
     let localStorageData = getFromStorage();
-    let taskIndex = localStorageData.indexOf(task);
+    console.log(task);
+    
+    let taskIndex = localStorageData.findIndex(t => t.taskId === task.taskId);
+    console.log(taskIndex);
 
     localStorageData.splice(taskIndex, 1);
 

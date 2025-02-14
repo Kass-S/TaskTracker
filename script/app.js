@@ -24,7 +24,7 @@ const GetTaskList = () => {
         cardDiv.className = "max-w-sm p-6 bg-amber-50 border border-gray-200 rounded-lg shadow-sm mt-5 m-5";
 
         let cardH5 = document.createElement('h5');
-        cardH5.className = "mb-2 text-2xl font-bold tracking-tight";
+        cardH5.className = "mb-2 mx-20 text-2xl font-bold tracking-tight";
         cardH5.innerText = `${task.taskName}`;
 
         let cardP = document.createElement('p');
@@ -32,25 +32,35 @@ const GetTaskList = () => {
         cardP.innerText = `${task.taskDescription}`;
 
         let cardPrirityP = document.createElement('p');
-        cardPrirityP.className = "mb-3 font-normal text-lg text-gray-700";
+        cardPrirityP.className = "mb-3 font-normal text-sm text-gray-700";
         cardPrirityP.innerText = `Priority: ${task.priorityStatus}`;
+
+        let cardDueDateP = document.createElement('p');
+        cardDueDateP.className = "mb-3 font-normal text-sm text-gray-700";
+        cardDueDateP.innerText = `Due Date: ${task.dueDate}`;
 
         let removeBtn = document.createElement('button');
         removeBtn.className = 'bg-red-500 inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg hover:bg-red-500 hover:cursor-pointer';
         removeBtn.innerText = 'Delete';
 
         let editBtn = document.createElement('button');
-        editBtn.className = "inline-flex items-center ml-4 px-5 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-600";
+        editBtn.className = "inline-flex items-center ml-4 px-5 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-600 hover:cursor-pointer";
         editBtn.innerText = "Edit";
 
         removeBtn.addEventListener('click', () => {
+            //is deleting the wrong object from local storage
             removeFromStorage(task);
             cardDiv.remove();
+        })
+
+        editBtn.addEventListener('click', () => {
+
         })
 
         cardDiv.appendChild(cardH5);
         cardDiv.appendChild(cardP);
         cardDiv.appendChild(cardPrirityP);
+        cardDiv.appendChild(cardDueDateP);
         cardDiv.appendChild(removeBtn);
         cardDiv.appendChild(editBtn);
 
@@ -66,7 +76,17 @@ addTaskBtn.addEventListener('click', () => {
     let taskDescription = taskDescriptionInput.value;
     let dueDate = dueDateInput.value;
 
-    let wholeTask = {taskName, taskDescription, dueDate, priorityStatus};
+    let dataTask = getFromStorage();
+    let taskId = 0;
+
+    if(dataTask.length == 0){
+        taskId = 1;
+    }else{
+        taskId = dataTask[dataTask.length - 1].taskId + 1;
+        console.log(dataTask[dataTask.length - 1])
+    }
+
+    let wholeTask = {taskId, taskName, taskDescription, dueDate, priorityStatus};
     saveToStorage(wholeTask);
 
     GetTaskList();

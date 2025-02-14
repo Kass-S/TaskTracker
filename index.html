@@ -9,10 +9,10 @@
 </head>
 <body class="bg-amber-100">
 
-    <div class="m-5">
-        <input id="taskNameInput" placeholder="Task Name" type="text" class="bg-green-600 hover:bg-green-500 placeholder:text-black rounded-lg">
+    <div class="m-10 mx-20">
+        <input id="taskNameInput" placeholder="Task Name" type="text" class="bg-green-500 hover:bg-green-400 placeholder:text-black rounded-lg">
 
-        <input id="taskDescriptionInput" placeholder="Description" type="text" class="bg-green-600 hover:bg-green-500 placeholder:text-black rounded-lg">
+        <input id="taskDescriptionInput" placeholder="Description" type="text" class="bg-green-500 hover:bg-green-400 placeholder:text-black rounded-lg">
         
         <button id="priorityStatusBtn" data-dropdown-toggle="dropdown" class="bg-green-600 hover:bg-green-500 hover:cursor-pointer text-black rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button">Priority Status 
             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -34,15 +34,24 @@
             </ul>
         </div>
         
-        <input id="dueDateInput" placeholder="Due Date" type="text" class="bg-green-600 hover:bg-green-500 placeholder:text-black rounded-lg">
+        <input id="dueDateInput" placeholder="Due Date" type="date" class="bg-green-500 hover:bg-green-400 placeholder:text-black rounded-lg">
 
-        <button id="addTaskBtn" class="bg-green-600 hover:bg-green-500 text-black rounded-lg p-2 px-5 ml-10">Add Task</button>
+        <button id="addTaskBtn" class="bg-green-600 hover:bg-green-500 hover:cursor-pointer text-black rounded-lg p-2 px-5 ml-10">Add Task</button>
     </div>
 
     <div class="flex justify-around text-center mt-10">
-        <div id="toDoStatus" class="text-3xl ">To Do</div>
-        <div id="inProgressStatus" class="text-3xl ">In Progress</div>
-        <div id="completedStatus" class="text-3xl ">Completed</div>
+        <div>
+            <p class="text-3xl">To Do</p>
+            <div id="toDoStatus" ></div>
+        </div>
+        <div>
+            <p class="text-3xl">In Progress</p>
+            <div id="inProgressStatus"></div>
+        </div>
+        <div>
+            <p class="text-3xl ">Completed</p>
+            <div id="completedStatus"></div>
+        </div>      
     </div>
 
     

@@ -539,6 +539,18 @@
   .m-5 {
     margin: calc(var(--spacing) * 5);
   }
+  .m-10 {
+    margin: calc(var(--spacing) * 10);
+  }
+  .mx-6 {
+    margin-inline: calc(var(--spacing) * 6);
+  }
+  .mx-10 {
+    margin-inline: calc(var(--spacing) * 10);
+  }
+  .mx-20 {
+    margin-inline: calc(var(--spacing) * 20);
+  }
   .ms-2 {
     margin-inline-start: calc(var(--spacing) * 2);
   }
@@ -716,6 +728,12 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
+  .px-10 {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  .px-20 {
+    padding-inline: calc(var(--spacing) * 20);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -814,6 +832,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-100);
+      }
+    }
+  }
+  .hover\:bg-green-400 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-400);
       }
     }
   }
