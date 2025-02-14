@@ -1,4 +1,4 @@
-import { saveToStorage, getFromStorage, removeFromStorage } from "./localSorage.js";
+import { saveToStorage, getFromStorage, removeFromStorage, updateTaskInStorage } from "./localSorage.js";
 
 let taskNameInput = document.getElementById('taskNameInput');
 let taskDescriptionInput = document.getElementById('taskDescriptionInput');
@@ -18,6 +18,10 @@ let completedStatus = document.getElementById('completedStatus');
 let priorityStatus = 'Low'
 
 const GetTaskList = () => {
+    toDoStatus.innerHTML = '';
+    inProgressStatus.innerHTML = '';
+    completedStatus.innerHTML = '';
+
     let taskList = getFromStorage();
 
     taskList.map(task => {
@@ -49,9 +53,15 @@ const GetTaskList = () => {
         editBtn.className = "inline-flex items-center ml-4 px-5 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-400 hover:cursor-pointer";
         editBtn.innerText = "Edit";
 
-        let moveBtn =document.createElement('button');
+        let moveBtn = document.createElement('button');
         moveBtn.className = "inline-flex items-center ml-4 px-2 py-2 text-sm font-medium text-center rounded-lg bg-green-500 hover:bg-green-400 hover:cursor-pointer";
-        moveBtn.innerText = "Progress";
+        if (task.taskStatus === "To Do") {
+            moveBtn.innerText = "Progress";
+        } else if (task.taskStatus === "In Progress") {
+            moveBtn.innerText = "Complete";
+        } else {
+            moveBtn.innerText = "";
+        }
 
         removeBtn.addEventListener('click', () => {
             removeFromStorage(task);
@@ -62,8 +72,6 @@ const GetTaskList = () => {
             
         })
 
-        
-
         cardDiv.appendChild(cardH5);
         cardDiv.appendChild(cardP);
         cardDiv.appendChild(cardPrirityP);
@@ -71,15 +79,28 @@ const GetTaskList = () => {
         cardDiv.appendChild(removeBtn);
         cardDiv.appendChild(editBtn);
         cardDiv.appendChild(moveBtn);
-
-        toDoStatus.appendChild(cardDiv);
+        
+        //toDoStatus.appendChild(cardDiv);
+        
+        if(task.taskStatus === "To Do"){
+            toDoStatus.appendChild(cardDiv);
+        }else if(task.taskStatus === "In Progress"){
+            inProgressStatus.appendChild(cardDiv);
+        }else if(task.taskStatus === "Completed"){
+            completedStatus.appendChild(cardDiv);
+        }
 
         moveBtn.addEventListener('click', () => {
-            if(toDoStatus.appendChild(cardDiv) == true){
+            if (moveBtn.innerText === "Progress") {
+                moveBtn.innerText = "Complete";
+                task.taskStatus = "In Progress";
                 inProgressStatus.appendChild(cardDiv);
-            }else if(inProgressStatus.appendChild(cardDiv) == true){
+            } else if (moveBtn.innerText === "Complete") {
+                task.taskStatus = "Completed";  
                 completedStatus.appendChild(cardDiv);
             }
+
+            updateTaskInStorage(task);   
         })
 
     })
@@ -88,10 +109,13 @@ GetTaskList();
 
 addTaskBtn.addEventListener('click', () => {
     toDoStatus.innerHTML = '';
+    inProgressStatus.innerHTML = '';
+    completedStatus.innerHTML = '';
 
     let taskName = taskNameInput.value;
     let taskDescription = taskDescriptionInput.value;
     let dueDate = dueDateInput.value;
+    let taskStatus = 'To Do';
 
     let dataTask = getFromStorage();
     let taskId = 0;
@@ -103,7 +127,7 @@ addTaskBtn.addEventListener('click', () => {
         console.log(dataTask[dataTask.length - 1])
     }
 
-    let wholeTask = {taskId, taskName, taskDescription, dueDate, priorityStatus};
+    let wholeTask = {taskId, taskName, taskDescription, dueDate, priorityStatus, taskStatus};
     saveToStorage(wholeTask);
 
     GetTaskList();

@@ -16,6 +16,16 @@ const getFromStorage = () => {
     return JSON.parse(localStorageData);
 }
 
+function updateTaskInStorage(updatedTask) {
+    let taskList = getFromStorage();
+    taskList = taskList.map(task => {
+        if (task.taskId === updatedTask.taskId) {
+            task = updatedTask;
+        }
+    });
+    saveToStorage(taskList); 
+}
+
 const removeFromStorage = (task) => {
     let localStorageData = getFromStorage();
     console.log(task);
@@ -28,4 +38,4 @@ const removeFromStorage = (task) => {
     localStorage.setItem('Task', JSON.stringify(localStorageData));
 }
 
-export { saveToStorage, getFromStorage, removeFromStorage}
+export { saveToStorage, getFromStorage, removeFromStorage, updateTaskInStorage}
