@@ -28,15 +28,15 @@ const GetTaskList = () => {
         cardH5.innerText = `${task.taskName}`;
 
         let cardP = document.createElement('p');
-        cardP.className = "mb-3 font-normal text-gray-700";
+        cardP.className = "mb-3 font-normal text-lg text-gray-700";
         cardP.innerText = `${task.taskDescription}`;
 
         let cardPrirityP = document.createElement('p');
-        cardPrirityP.className = "mb-3 font-normal text-gray-700";
+        cardPrirityP.className = "mb-3 font-normal text-lg text-gray-700";
         cardPrirityP.innerText = `Priority: ${task.priorityStatus}`;
 
         let removeBtn = document.createElement('button');
-        removeBtn.className = 'bg-red-500 inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg  hover:bg-red-500 hover:cursor-pointer';
+        removeBtn.className = 'bg-red-500 inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg hover:bg-red-500 hover:cursor-pointer';
         removeBtn.innerText = 'Delete';
 
         let editBtn = document.createElement('button');
