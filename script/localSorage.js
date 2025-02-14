@@ -4,11 +4,11 @@ const saveToStorage = (task) => {
     if(!taskArr.includes(task)){
         taskArr.push(task);
     }
-    localStorage.setItem('SavedName', JSON.stringify(taskArr));
+    localStorage.setItem('Task', JSON.stringify(taskArr));
 }
 
 const getFromStorage = () => {
-    let localStorageData = localStorage.getItem('SavedName');
+    let localStorageData = localStorage.getItem('Task');
 
     if(localStorageData == null){
         return [];
@@ -22,7 +22,7 @@ const removeFromStorage = (task) => {
 
     localStorageData.splice(taskIndex, 1);
 
-    localStorage.setItem('SavedName', JSON.stringify(localStorageData));
+    localStorage.setItem('Task', JSON.stringify(localStorageData));
 }
 
 export { saveToStorage, getFromStorage, removeFromStorage}
